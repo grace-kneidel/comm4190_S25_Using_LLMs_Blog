@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "My Explorations with LLMs",
     "section": "",
-    "text": "A test post\n\n\n\n\n\n\nLLMs\n\n\nprompting\n\n\nlogic\n\n\n\nAn example post from a Jupyter notebook\n\n\n\n\n\nFeb 2, 2024\n\n\nAn LLM User\n\n\n\n\n\n\nNo matching items"
+    "text": "My first true post\n\n\n\n\n\n\ntest\n\n\n\nExciting~\n\n\n\n\n\nJan 29, 2025\n\n\nGrace Kneidel\n\n\n\n\n\n\n\n\n\n\n\n\nA test post\n\n\n\n\n\n\nLLMs\n\n\nprompting\n\n\nlogic\n\n\n\nAn example post from a Jupyter notebook\n\n\n\n\n\nFeb 2, 2024\n\n\nAn LLM User\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -26,12 +26,5 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
-  },
-  {
-    "objectID": "posts/001_my_first_post.html",
-    "href": "posts/001_my_first_post.html",
-    "title": "Grace's LLM Blog",
-    "section": "",
-    "text": "---\ntitle: \"My first true post\"\ndescription: \"Exciting~\"\nauthor: \"Grace Kneidel\"\ndate: \"1/29/2025\"\ncategories:\n  - test\n---"
   }
 ]
