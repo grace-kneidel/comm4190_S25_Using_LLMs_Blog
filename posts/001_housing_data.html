@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Grace Kneidel">
-<meta name="dcterms.date" content="2025-01-29">
-<meta name="description" content="Exciting~">
+<meta name="dcterms.date" content="2025-02-01">
+<meta name="description" content="It turns out to be quite the challenge.">
 
-<title>My first true post – Grace’s LLM Blog</title>
+<title>Can ChatGPT help me open the correct PDF? – Grace’s LLM Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,14 +111,14 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">My first true post</h1>
+      <h1 class="title">Can ChatGPT help me open the correct PDF?</h1>
                   <div>
         <div class="description">
-          Exciting~
+          It turns out to be quite the challenge.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">test</div>
+                <div class="quarto-category">prompting</div>
               </div>
                   </div>
   </div>
@@ -136,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 29, 2025</p>
+        <p class="date">February 1, 2025</p>
       </div>
     </div>
     
@@ -155,8 +155,71 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>Hi everyone,</p>
+<p>Welcome to my first post! Today, I’m looking at ChatGPT’s ability to do understand the structure of Census data. The <a href="https://www.census.gov/library/publications/1953/dec/housing-vol-02.html">data</a> are organized into different PDFs as follows.</p>
+<ul>
+<li><p>Part 1: United States and Geographic Divisions</p></li>
+<li><p>Part 2: Akron, OH – Des Moines, IA</p></li>
+<li><p>Part 3: Detroit, MI – Memphis, TN</p></li>
+<li><p>Part 4: Miami, FL – Salt Lake City, UT</p></li>
+<li><p>Part 5: San Antonio, TX – Youngstown, OH</p></li>
+</ul>
+<section id="the-task" class="level3">
+<h3 class="anchored" data-anchor-id="the-task">The task</h3>
+<p>I was curious if ChatGPT would be able to tell me which section would contain data for Philadelphia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="001_housing_data_files/figure-html/15017c3a-0c34-47d1-a891-cb36bd75f242-1-1115727a-53d3-4362-9ff9-1420fc403337.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Not a great start</strong></figcaption>
+</figure>
+</div>
+<p>Inspired by the concept of <em>prewarming</em> or <em>internal retrieval</em> described in <em>Prompt Engineering for Generative AI</em> (Phoenix and Taylor 2024), I decided to ask ChatGPT if it could find a pattern in the file structures. Then, referencing our previous exchange where it discovered the pattern, I would ask it to try the task again.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="001_housing_data_files/figure-html/ddc362c4-41fe-47d1-bc3d-be5ce1e468c4-1-a81e9c6a-ff07-4879-b7e6-e15259604ffc.png" class="img-fluid figure-img"></p>
+<figcaption>**Better!</figcaption>
+</figure>
+</div>
+<p>Ok, time for the internal retrieval to shine.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="001_housing_data_files/figure-html/ca3e3846-e8b8-4c2c-99b2-38beacce983a-1-95c3afe7-e695-43ee-a6d5-146b029f0350.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Almost there…</strong></figcaption>
+</figure>
+</div>
+<div class="alert alert-block alert-success">
+<p><b>Pros:</b> ChatGPT was able to remember that it had previously found that the files were ordered alphabetically when I started the next prompt with “With that in mind”.</p>
+</div>
+<div class="alert alert-block alert-danger">
+<p><b>Cons: </b> ChatGPT is not correctly retrieving the order of the alphabet.</p>
+</div>
+<p>After expressing some doubt in the alphabetization, ChatGPT was able to provide me with the correct answer.</p>
+<p><img src="001_housing_data_files/figure-html/cf56dfed-798f-4877-bf1a-eeb627c2a7f9-1-d6fd8218-e6a7-4b7b-90eb-b2ac0aa1ebc4.png" class="img-fluid"></p>
+<p>And just to be sure, I asked it about a different US city, and it was able to complete the task.</p>
+<p><img src="001_housing_data_files/figure-html/ce09836d-f699-4865-9ba6-7e3bc277c220-1-1683bd68-0095-4885-a170-dea4943cb125.png" class="img-fluid"></p>
+</section>
+<section id="so-could-this-have-been-done-all-in-one-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="so-could-this-have-been-done-all-in-one-prompt">So, could this have been done all in one prompt?</h3>
+<p>I closed out my current session of ChatGPT and tried to create one prompt that would make ChatGPT do some sort of internal retrieval.</p>
+<p>I ended up trying this:</p>
+<blockquote class="blockquote">
+<p>Hi! I have a two part question. These are pdf names that have housing data for various US cities in 1950. * Part 2: Akron, OH – Des Moines, IA * Part 3: Detroit, MI – Memphis, TN * Part 4: Miami, FL – Salt Lake City, UT * Part 5: San Antonio, TX – Youngstown, OH</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Question 1</strong>: Why do you think Akron, OH comes before Des Moines, IA, and Des Moines, IA comes before Detroit, MI? Explain your reasoning. <strong>Question 2</strong>: Which pdf do you think Philadelphia, PA would be in? Explain your reasoning.`</p>
+</blockquote>
+<p>ChatGPT was able to correctly answer <strong>Question 1</strong>: saying “The cities are likely listed in alphabetical order (from A to Z), which is why Akron, OH appears before Des Moines, IA, and Des Moines, IA comes before Detroit, MI”.</p>
+<p>But when it came to <strong>Question 2</strong>, there was more work still to be done.</p>
+<p><img src="001_housing_data_files/figure-html/568e8f67-a146-491b-bf07-2f4d4abc8153-1-f43197a5-84fd-4b15-9363-0e346c6c238d.png" class="img-fluid"></p>
+<p>Then I thought maybe a three part question would help:</p>
+<blockquote class="blockquote">
+<p><strong>Question 1</strong>: Why do you think Akron, OH comes before Des Moines, IA, and Des Moines, IA comes before Detroit, MI? Explain your reasoning. <strong>Question 2</strong>: Can you please print out the order of the alphabet? <strong>Question 3</strong>: Which pdf do you think Philadelphia, PA would be in? Explain your reasoning.</p>
+</blockquote>
+<p><img src="001_housing_data_files/figure-html/216708b4-7a4e-4ef7-a9e2-018ff19c8ba5-1-d7e0f341-a44d-48c6-a4d6-155c8bdbd10f.png" class="img-fluid"></p>
+<p>Sigh! I will have to try this again some other time once I’ve learned more about prompting strategies.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
