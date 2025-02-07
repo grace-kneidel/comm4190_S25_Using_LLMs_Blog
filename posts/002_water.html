@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Grace Kneidel">
+<meta name="dcterms.date" content="2025-02-07">
+<meta name="description" content="Do LLMs know how much water they use?">
+
+<title>The environmental impact of generative AI – Grace’s LLM Blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-df418981c34360f9120995b3f214f13a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Grace’s LLM Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/grace-kneidel"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">The environmental impact of generative AI</h1>
+                  <div>
+        <div class="description">
+          Do LLMs know how much water they use?
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">prompting</div>
+                <div class="quarto-category">comparing models</div>
+                <div class="quarto-category">environment</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Grace Kneidel </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 7, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>Lots of people, myself included, have some concerns about using LLMs because they are so resource intensive. Today, I figured I would test AI’s own awareness of its water needs and compare them to the current estimates. I’m going to vary this across different models that have different knowledge cutoffs to see how the responses vary. New work on the water use of generative AI could have happened since these models were trained, so I’m hoping we will see some cool variation.</p>
+<section id="the-test" class="level3">
+<h3 class="anchored" data-anchor-id="the-test">The test</h3>
+<section id="part-1-gpt-4o" class="level4">
+<h4 class="anchored" data-anchor-id="part-1-gpt-4o">Part 1: gpt-4o</h4>
+<div id="ff4422d9-449d-4b72-807f-4f8f06853510" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load API key</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> load_dotenv()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="50685982-7dde-480e-a228-ebf33154b888" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">"gpt-4o"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>system_role <span class="op">=</span> <span class="st">"You are a reporter for The Economist covering environmental economics"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>initial_prompt <span class="op">=</span> <span class="st">'''First, state your knowledge cutoff. Then, write 1 paragraph explaining the environmental impact of each LLM query. Focus on the use </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">per single query. Compare to other water intensive activities such as brushing your teeth to give context. Be sure to </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">use the most recent scientific estimates and cite your sources.'''</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: system_role} ,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: initial_prompt},</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "assistant", "content": "" },</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "user", "content": "" }</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b35f7861-8d07-4cde-aac8-512940aba615" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span>model,        <span class="co"># the model to use </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>messages,  <span class="co"># a list of dictionaries with the prompt</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  n<span class="op">=</span><span class="dv">3</span>,                <span class="co"># how many responses to generate</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  temperature<span class="op">=</span><span class="fl">0.7</span>     <span class="co"># temperature parameter</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(messages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[{'role': 'system', 'content': 'You are a reporter for The Economist covering environmental economics'}, {'role': 'user', 'content': 'First, state your knowledge cutoff. Then, write 1 paragraph explaining the environmental impact of each LLM query. Focus on the use \nper single query. Compare to other water intensive activities such as brushing your teeth to give context. Be sure to \nuse the most recent scientific estimates and cite your sources.'}]</code></pre>
+</div>
+</div>
+<div id="849cc5ec-0e26-4e96-a31b-4a60314f24ab" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> resp <span class="kw">in</span> completion.choices: </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(resp.message.content)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'---'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>My knowledge cutoff date is October 2023. 
+
+The environmental impact of each large language model (LLM) query, specifically in terms of water consumption, is relatively modest when compared to traditional water-intensive activities. Recent estimates suggest that a single LLM query consumes about 0.3 liters of water, which is used primarily for cooling the data centers where the computations occur (Patterson et al., 2022). To put this into perspective, this is significantly less than the water usage involved in brushing your teeth, which can use up to 8 liters if the tap is left running (EPA, 2023). While the water use per LLM query is comparatively low, the cumulative impact can become significant given the scale at which these models are deployed across the globe. This highlights the importance of optimizing data center cooling systems and improving the energy efficiency of LLMs to mitigate their environmental footprint. 
+
+References:
+- Patterson, D. et al. (2022). 'Carbon Emissions and Large Neural Network Training'. 
+- Environmental Protection Agency (EPA) (2023). 'WaterSense: Simple Ways to Save Water'.
+---
+My knowledge cutoff is October 2023. The environmental impact of each query processed by large language models (LLMs), such as those used in AI chatbots, primarily involves energy consumption and its associated carbon emissions, rather than water usage. However, water is indirectly used in cooling the data centers where these models run. Recent studies suggest that a single LLM query can consume about 0.0003 kilowatt-hours (kWh) of electricity, equating to approximately 0.3 grams of CO2 emissions, depending on the energy mix used (Wu et al., 2023). In terms of water usage, a single query is estimated to indirectly require about 0.0005 liters of water, primarily for cooling purposes (Patterson et al., 2023). For context, brushing your teeth with the tap running can use approximately 7.5 liters of water per minute. Therefore, the water footprint of an LLM query is minuscule compared to such activities, highlighting the relatively low direct water demand of these digital interactions. However, as the use of AI continues to scale, the cumulative environmental impacts warrant attention and efforts to improve the sustainability of data centers.
+---
+My knowledge cutoff date is October 2023.
+
+The environmental impact of each Large Language Model (LLM) query primarily involves energy consumption, which indirectly contributes to water use, given that water is often used in electricity generation processes. Recent scientific estimates suggest that the carbon and water footprint of a single LLM query can vary significantly depending on the size of the model and the infrastructure efficiency. For instance, a single query on a large-scale LLM might consume approximately 0.5 liters of water, primarily due to the cooling requirements of data centers (Patterson et al., 2021). To put this into context, brushing your teeth with the tap running for two minutes uses about 6 liters of water, according to the U.S. Environmental Protection Agency. Therefore, while each LLM query represents a small fraction of the water usage of common daily activities, the cumulative impact can be substantial given the scale of LLM deployment and usage globally. It is crucial for data centers to adopt more sustainable energy and water usage practices to mitigate this impact.
+---</code></pre>
+</div>
+</div>
+<p>Wow! These estimates vary a lot, from 0.5 liters to 0.0005 liters.</p>
+</section>
+<section id="part-2-gpt-3.5-turbo" class="level4">
+<h4 class="anchored" data-anchor-id="part-2-gpt-3.5-turbo">Part 2: gpt-3.5-turbo</h4>
+<div id="8bc511ec-7d98-4ba2-abae-25f0d1326520" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">"gpt-3.5-turbo"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>system_role <span class="op">=</span> <span class="st">"You are a reporter for The Economist covering environmental economics"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>initial_prompt <span class="op">=</span> <span class="st">'''First, state your knowledge cutoff. Then, write 1 paragraph explaining the environmental impact of each LLM query. Focus on the use </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">per single query. Compare to other water intensive activities such as brushing your teeth to give context. Be sure to </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">use the most recent scientific estimates and cite your sources.'''</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: system_role} ,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: initial_prompt},</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "assistant", "content": "" },</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "user", "content": "" }</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span>model,        <span class="co"># the model to use </span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>messages,  <span class="co"># a list of dictionaries with the prompt</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  n<span class="op">=</span><span class="dv">3</span>,                <span class="co"># how many responses to generate</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  temperature<span class="op">=</span><span class="fl">0.7</span>     <span class="co"># temperature parameter</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(messages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[{'role': 'system', 'content': 'You are a reporter for The Economist covering environmental economics'}, {'role': 'user', 'content': 'First, state your knowledge cutoff. Then, write 1 paragraph explaining the environmental impact of each LLM query. Focus on the use \nper single query. Compare to other water intensive activities such as brushing your teeth to give context. Be sure to \nuse the most recent scientific estimates and cite your sources.'}]</code></pre>
+</div>
+</div>
+<div id="64ceb84b-9949-45e9-b173-b8850c060d41" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> resp <span class="kw">in</span> completion.choices: </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(resp.message.content)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'---'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>My knowledge cutoff date is September 2021. 
+
+1. "Environmental impact of almond farming": The environmental impact of almond farming is significant due to its high water consumption. It is estimated that it takes around 1.1 gallons of water to produce a single almond, making almond farming one of the most water-intensive agricultural activities. To put this into context, the water used to produce a single almond is equivalent to the water used for brushing your teeth for two weeks. This high water consumption has raised concerns about the sustainability of almond farming, especially in water-stressed regions like California. (Source: University of California, Davis)
+
+2. "Environmental impact of beef production": Beef production has a considerable environmental impact, primarily due to its high water usage and greenhouse gas emissions. It is estimated that producing a single pound of beef requires around 1,800 gallons of water, making it one of the most water-intensive foods. To put this in perspective, the water used to produce a single pound of beef is equivalent to the water used for brushing your teeth for over six months. Additionally, beef production is a significant contributor to deforestation and methane emissions, further exacerbating its environmental impact. (Source: Water Footprint Network)
+
+3. "Environmental impact of plastic bottle manufacturing": The environmental impact of plastic bottle manufacturing is substantial, particularly in terms of energy consumption and greenhouse gas emissions. It is estimated that producing a single plastic bottle requires around 1.5 gallons of water, mostly for the production of raw materials and the manufacturing process. To put this in context, the water used to produce a single plastic bottle is equivalent to the water used for brushing your teeth for three days. Additionally, the production and disposal of plastic bottles contribute to pollution and marine debris, posing a threat to ecosystems and wildlife. (Source: The Guardian)
+---
+My knowledge cutoff is September 2021.
+
+1. "Environmental impact of almond production per single query compared to other water intensive activities"
+Almond production is known to be water-intensive, with estimates suggesting that it takes about 1.1 gallons of water to produce a single almond. This high water usage has raised concerns about the environmental impact of almond farming, particularly in regions facing water scarcity. To put this into context, the water used to produce one almond is equivalent to the amount of water used for brushing your teeth for over two minutes. This comparison highlights the significant water footprint of almond production and the need for sustainable water management practices in the industry (UC Davis, 2021).
+
+2. "Environmental impact of avocado production per single query compared to other water intensive activities"
+Avocado production is another water-intensive agricultural activity, with estimates indicating that it takes around 74.1 gallons of water to produce a single pound of avocados. This high water usage has raised concerns about the environmental impact of avocado farming, especially in regions where water resources are limited. To put this into perspective, the water used to produce one pound of avocados is equivalent to the amount of water used for brushing your teeth for about 37 minutes. This comparison underscores the significant water footprint of avocado production and the importance of implementing water-efficient practices in the industry to mitigate environmental impacts (Water Footprint Network, 2021).
+---
+My knowledge cutoff is September 2021.
+
+1. "Environmental impact of almond farming": Almond farming is a water-intensive activity, with estimates suggesting that it takes about 1.1 gallons of water to produce a single almond. This is a significant amount considering that California, a major almond-producing region, faces water scarcity issues. The environmental impact of almond farming includes the depletion of groundwater resources and potential harm to local ecosystems due to excessive water use. To put this into perspective, the water used to produce one almond is roughly equivalent to the water used for brushing your teeth 17 times (which typically uses about 0.063 gallons per minute for a recommended two-minute brush). Source: University of California, Davis.
+
+2. "Environmental impact of beef production": Beef production is a highly water-intensive process, with estimates suggesting that it takes approximately 1,800 gallons of water to produce one pound of beef. This is due to the water required for growing animal feed, providing drinking water for the cattle, and processing the meat. The environmental impact of beef production includes water pollution from animal waste and the greenhouse gas emissions associated with livestock farming. To put this into context, the water used to produce one pound of beef is equivalent to the water used for brushing your teeth for about 28,500 times. Source: Water Footprint Network.
+
+3. "Environmental impact of cotton cultivation": Cotton cultivation is another water-intensive activity, with estimates suggesting that it takes around 2,700 gallons of water to produce one cotton t-shirt. Water is primarily used for irrigating cotton fields, and the environmental impact includes the depletion of freshwater resources and potential contamination from agrochemicals used in cotton farming. To provide context, the water used to produce one cotton t-shirt is equivalent to the water used for brushing your teeth for approximately 42,800 times. Source: World Wildlife Fund.
+
+Overall, these examples highlight the significant water footprint of various agricultural activities and their potential environmental consequences when compared to everyday water usage for activities like brushing teeth.
+---</code></pre>
+</div>
+</div>
+<p>Wow! These didn’t really even understand the question</p>
+</section>
+<section id="part-3-o3-mini" class="level4">
+<h4 class="anchored" data-anchor-id="part-3-o3-mini">Part 3: o3-mini</h4>
+<div id="03fe1f43-eb17-4d22-8754-fd92135bdc84" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">"o3-mini"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>system_role <span class="op">=</span> <span class="st">"You are a reporter for The Economist covering environmental economics"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>initial_prompt <span class="op">=</span> <span class="st">'''First, state your knowledge cutoff. Then, write 1 paragraph explaining the environmental impact of each LLM query. Focus on the use </span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">per single query. Compare to other water intensive activities such as brushing your teeth to give context. Be sure to </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">use the most recent scientific estimates and cite your sources.'''</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: system_role} ,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: initial_prompt},</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "assistant", "content": "" },</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "user", "content": "" }</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span>model,        <span class="co"># the model to use </span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>messages,  <span class="co"># a list of dictionaries with the prompt</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  n<span class="op">=</span><span class="dv">3</span>,                <span class="co"># how many responses to generate</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="93b6a367-708e-45c7-8ab3-4dda0482a4ea" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> resp <span class="kw">in</span> completion.choices: </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(resp.message.content)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'---'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>My knowledge cutoff is October 2023. Recent estimates suggest that the environmental footprint of a single query to a large language model (LLM) is extremely small—in the order of a few watt‐hours of electricity, which, through the necessary cooling processes in modern data centers, might translate into perhaps a few hundredths of a liter of water consumed per query. To put this into perspective, the water used in powering and cooling the servers that handle such a query would be several orders of magnitude lower than the 2–4 liters typically wasted during a two‐minute session of brushing one’s teeth under a running tap (U.S. Environmental Protection Agency, 2022). The rigorous energy and water management protocols now adopted by major cloud providers mean that each LLM query carries a lighter environmental toll than other daily water-intensive activities; indeed, while thousands of queries may collectively contribute to a measurable environmental demand, an individual query’s impact remains negligible relative to everyday water usage. (See also Strubell et al., 2019, for broader energy and policy considerations in machine learning.)
+---
+My knowledge cutoff is 2023-10. 
+
+Recent estimates indicate that serving a single query to a large language model (LLM) consumes on the order of 0.1–0.3 watt‐hours (Wh) of energy, though values vary with model size, hardware efficiency, and data center design (Strubell et al., 2019). In data centers that use water-based cooling systems, roughly 1–2 liters of water may be consumed per kilowatt‐hour generated (U.S. Department of Energy, 2020), which implies that the water footprint per LLM query is in the order of 0.0001–0.0006 liters—extremely small in absolute terms. To put this in perspective, brushing your teeth typically uses between 2 and 5 liters of water per session, especially if the tap runs continuously, meaning that the water used per LLM query is several orders of magnitude lower than that of a single dental hygiene routine. However, while the water and energy costs of an individual query are minute, the vast aggregate demand from billions of queries underscores the importance of improving data center efficiency and pursuing greener AI technologies. (Sources: Strubell et al., 2019, “Energy and Policy Considerations for Deep Learning in NLP”; U.S. Department of Energy, 2020, Data Center Water Usage Assessment.)
+---
+My knowledge cutoff is 2023-10. Recent research shows that while large language model (LLM) queries do have an environmental impact, the water usage per query is very low compared to everyday activities. LLMs run on data centers that require electricity and cooling, with cooling systems in water-cooled facilities typically consuming anywhere from a few milliliters to a few tens of milliliters of water per kilowatt‐hour of processing, depending on the technology and local energy mix (Shehabi et al., 2016). For a single query that might use on the order of 10 Wh, the attributable water use can be roughly estimated in the range of 10–50 ml. In contrast, a standard two-minute session of brushing your teeth with the tap running can easily use 1–2 liters of water (U.S. EPA), meaning that even on a water-intensive day, the water footprint from an individual LLM query is orders of magnitude smaller. These comparisons underscore that while optimizing AI infrastructure for reduced energy and water use is important, the water use per query remains relatively minor when set against typical domestic water consumption practices. (Sources: Shehabi et al., 2016; U.S. Environmental Protection Agency)
+---</code></pre>
+</div>
+</div>
+<p>Interesting how these cite primarily the EPA and papers from many years ago.</p>
+</section>
+</section>
+<section id="so-whats-the-correct-answer" class="level3">
+<h3 class="anchored" data-anchor-id="so-whats-the-correct-answer">So what’s the <em>correct</em> answer?</h3>
+<p>There is none, and that’s part of why I thought this exercise was fun.</p>
+<p>One <a href="https://e360.yale.edu/features/artificial-intelligence-climate-energy-emissions">study</a> from Yale in February 2024 suggests that “a person who engages in a session of questions and answers with GPT-3 (roughly 10 to 50 responses) drives the consumption of a half-liter of fresh water”.</p>
+<p>So if we do the math based on this one estimate, each query is somewhere between 0.05 and 0.01 liters of water. But this may vary a lot for other LLM models, too. It seems that the models with later knowledge cutoffs (gpt-4o and o3-mini) were much better at understanding this.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/grace-kneidel\.github\.io\/comm4190_S25_Using_LLMs_Blog\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

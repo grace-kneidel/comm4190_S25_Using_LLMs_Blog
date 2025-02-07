@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/002_water.html",
       "/posts/001_housing_data.html"
     ]
   }
