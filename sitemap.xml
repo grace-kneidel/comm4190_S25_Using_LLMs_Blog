@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_housing_data.html</loc>
-    <lastmod>2025-02-07T21:10:26.152Z</lastmod>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
+    <lastmod>2025-02-15T23:49:43.065Z</lastmod>
   </url>
   <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
-    <lastmod>2025-02-07T21:10:26.149Z</lastmod>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/translation_stata_r.html</loc>
+    <lastmod>2025-02-15T23:49:43.070Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
-    <lastmod>2025-02-07T21:10:26.149Z</lastmod>
+    <lastmod>2025-02-15T23:49:43.065Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/002_water.html</loc>
-    <lastmod>2025-02-07T21:10:26.153Z</lastmod>
+    <lastmod>2025-02-15T23:49:43.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_housing_data.html</loc>
+    <lastmod>2025-02-15T23:49:43.068Z</lastmod>
   </url>
 </urlset>

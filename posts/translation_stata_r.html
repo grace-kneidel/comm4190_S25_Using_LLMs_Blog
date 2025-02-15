@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Grace Kneidel">
+<meta name="dcterms.date" content="2025-02-15">
+<meta name="description" content="It seems to depend a lot on the language">
 
-<title>My Explorations with LLMs – Grace’s LLM Blog</title>
+<title>How well can AI move from one coding language to another? – Grace’s LLM Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c37a40b267d3139d93432c283e34c257.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c37a40b267d3139d93432c283e34c257.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +69,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Grace’s LLM Blog</span>
     </a>
   </div>
@@ -149,7 +95,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -167,155 +113,141 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">My Explorations with LLMs</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">How well can AI move from one coding language to another?</h1>
+                  <div>
+        <div class="description">
+          It seems to depend a lot on the language
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Stata</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">translation</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Grace Kneidel </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 15, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RhdGE=">Stata <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29tcGFyaW5nJTIwbW9kZWxz">comparing models <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW52aXJvbm1lbnQ=">environment <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvbXB0aW5n">prompting <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHJhbnNsYXRpb24=">translation <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="the-art-of-code-translation" class="level3">
+<h3 class="anchored" data-anchor-id="the-art-of-code-translation">The art of (code) translation</h3>
+<p>As someone who works with a lot of data, I’ve noticed that sometimes certain coding languages are better suited towards specific tasks. On the other hand, projects can get more complicated when several scripts in several languages are involved, especially if not everybody on the team has the same amount of familiarity with each language.</p>
+<div class="{.}">
+<p>The goal today is to do an excercise with coding languages inspired by Chapter 3 of <em>Prompt Engineering for Generative AI</em> (Phoenix and Taylor 2024). The authors ask an LLM to create simple text in English. Then, they “Now make the text incredibly complex and hard to read.”. They ask AI to translate this complicated English text into simple Spanish text. Finally, they ask for the Spanish to be translated back into English and compare the output with the simple English text that the exercise began with. They find that LLMs do pretty well at this and attribute much of that success to the fact that Spanish and English texts are both widely available online.</p>
+</div>
+<section id="steps-of-this-experiment" class="level4">
+<h4 class="anchored" data-anchor-id="steps-of-this-experiment">Steps of this experiment</h4>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[1. Generate simple Stata code] --&gt; B[2. Make it harder to understand]
+  B --&gt; C[3. Translate to R in the simplest way possible]
+  C --&gt; D[4. Translate back to Stata]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>I’d like to avoid loading specific datasets into Stata and R, so I am going to prompt ChatGPT to build simple Stata code that involves drawing random numbers.</p>
+<section id="step-1-generate-simple-stata-code" class="level5">
+<h5 class="anchored" data-anchor-id="step-1-generate-simple-stata-code">Step 1: Generate simple Stata code</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-2-87a71a9e-7f12-40f5-acac-a7759419d1b9.png" class="img-fluid figure-img"></p>
+<figcaption>Off to a good start</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-1-66fd83c2-4019-4092-ae94-7ad4ed1b3a72.png" class="img-fluid figure-img"></p>
+<figcaption>Love the default colors!</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-2-make-it-harder-to-understand" class="level5">
+<h5 class="anchored" data-anchor-id="step-2-make-it-harder-to-understand">Step 2: Make it harder to understand</h5>
+<p>Now, in the same chat window, I will ask a variation of what Phoenix and Taylor asked in their Spanish to English example: “Now make the code incredibly complex and hard to read. BUT, it still needs to be able to run!”</p>
+<p>ChatGPT reported the following about its new code:</p>
+<p><em>What makes this code unnecessarily complicated:</em> 1. <em>Unnecessary local variables: Uses random operations like runiform and rnormal wrapped in local variables for no reason.</em> 2. <em>Confusing foreach and forval loops: Uses loops when they aren’t needed, just to replace values in a random manner.</em> 3. <em>Overuse of macros and complicated conditions: Involves checking macro lists, even though they aren’t required to generate the histogram.</em> 4. <em>Unnecessary graph twoway scatter: Adds a scatter plot for the same data, even though the task is to generate a histogram.</em></p>
+<p>While certainly overly complicated, this new code did not run. So I asked ChatGPT to try again. And again. I told it the errors that were appearing and got validating answers such as: - “Ah, I see the issue now! In Stata, you can’t use both the bin() and width() options together in the histogram command.” - “You’re right! I overlooked that once again. The issue is that Stata does not allow both bin() and width() to be used at the same time, so let’s adjust it to use one of those options correctly.”</p>
+<p>Eventually, I gave up and just troubleshooted the code that it outputted myself. I think ChatGPT was getting really excited about making the code needlessly complex, so it kept trying to add <strong>ALL</strong> the graphing options when that wasn’t actually allowed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="translation_stata_r_files/figure-html/9cadf186-cc70-4731-ae80-8ed2b192549e-1-7eecdb38-79db-4541-b626-e262a264c6d7.png" class="img-fluid figure-img"></p>
+<figcaption>Our needlessly complicated Stata histogram</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-3-translate-to-r-in-the-simplest-way-possible" class="level5">
+<h5 class="anchored" data-anchor-id="step-3-translate-to-r-in-the-simplest-way-possible">Step 3: Translate to R in the simplest way possible</h5>
+<p>Time to ask another variation of Phoenix and Taylor’s prompt. In the same window, I said:</p>
+<p><em>Now transform the Stata code into a simple, easy to read format that’s in R code , make sure that it is very easy to understand and read. You must ensure that it is as simple to comprehend as possible.</em></p>
+<p>ChatGPT did great here. Easy breezy, our histogram is now in R.<img src="translation_stata_r_files/figure-html/a7c14322-1599-480c-80a6-3ff7e337d3eb-1-46363e0c-e054-4014-85e9-e2ef7f194f0a.png" class="img-fluid"></p>
+</section>
+<section id="translate-back-to-stata" class="level5">
+<h5 class="anchored" data-anchor-id="translate-back-to-stata">4. Translate back to Stata</h5>
+<p>Given how well ChatGPT did at translating this code to R, and given how simple the code is now, I expected that this would be a breeze.</p>
+<p>But it wasn’t, because once again ChatGPT showed a lack of understanding of Stata image formatting commands! When I told it the error I was getting, I once again got a very affirming response:</p>
+<p><em>You’re absolutely right! In Stata, the <code>edgecolor()</code> option is not available for histograms. To correct that and ensure the code runs smoothly, I’ll remove that option and simplify the command while keeping it easy to understand.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="translation_stata_r_files/figure-html/1d3dffdc-24c0-4526-8aff-781da07a4cfe-1-a16933d0-da97-4d45-96cf-5b5b9afcca40.png" class="img-fluid figure-img"></p>
+<figcaption>Not quite a breeze</figcaption>
+</figure>
+</div>
+<p>After this correction, the code did run, but ChatGPT forgot to add the frequency option, so the data y axis shows the probability of each outcome from 0 to 0.5. But the y axis labels are still set to reflect frequency. It’s not a good look!</p>
+<p><img src="translation_stata_r_files/figure-html/7b038c12-e7de-4860-808b-8d257f40bf8d-1-39a7dacd-05a3-4b6e-9822-2aac15f558e6.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="conclusion" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
+<p>While ChatGPT was capable of performing the basic code translation tasks, it needed a lot of correction. It seemed to be a lot less comfortable working with Stata than with R. It’s true that R is open source and Stata isn’t, but I expected better results because Stata has been around for a long time. For reference, ChatGPT tells me that the first official version of R was released in February 2000, while Stata 1.0 was released in 1985.</p>
+<p>When pressed about its relative amounts of training data, ChatGPT did confess that it had more access to R data- though who knows if that is the truth.</p>
+<p><img src="translation_stata_r_files/figure-html/cbe2f32a-1411-41c0-a29d-8e81e26c5569-1-36b5669e-fe8f-4e49-8a0a-84683e38d66f.png" class="img-fluid"></p>
+<div class="alert alert-block alert-success">
+<p><b>A final note:</b> I had never before seen the Stata command that kept throwing me errors from the AI-generated responses. As far as I can tell, this command, <code>edgecolor</code>, is exclusively found in MATLAB syntax!</p>
+</div>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="U3RhdGElMkNSJTJDdHJhbnNsYXRpb24=" data-listing-date-sort="1739577600000" data-listing-file-modified-sort="1739663383070" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="904">
-<div class="thumbnail">
-<p><a href="./posts/translation_stata_r.html" class="no-external"></a></p><a href="./posts/translation_stata_r.html" class="no-external">
-<p class="card-img-top"><img src="posts/translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-2-87a71a9e-7f12-40f5-acac-a7759419d1b9.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/translation_stata_r.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/translation_stata_r.html" class="no-external">How well can AI move from one coding language to another?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/translation_stata_r.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGE='); return false;">
-Stata
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('dHJhbnNsYXRpb24='); return false;">
-translation
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/translation_stata_r.html" class="no-external">It seems to depend a lot on the language</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/translation_stata_r.html" class="no-external">
-<div class="listing-date">
-Feb 15, 2025
-</div>
-<div class="listing-author">
-Grace Kneidel
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="cHJvbXB0aW5nJTJDY29tcGFyaW5nJTIwbW9kZWxzJTJDZW52aXJvbm1lbnQ=" data-listing-date-sort="1738886400000" data-listing-file-modified-sort="1739663383068" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="234">
-<div class="thumbnail">
-<p><a href="./posts/002_water.html" class="no-external"></a></p><a href="./posts/002_water.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/002_water.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/002_water.html" class="no-external">The environmental impact of generative AI</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/002_water.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">
-prompting
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcGFyaW5nJTIwbW9kZWxz'); return false;">
-comparing models
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ZW52aXJvbm1lbnQ='); return false;">
-environment
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/002_water.html" class="no-external">Do LLMs know how much water they use?</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/002_water.html" class="no-external">
-<div class="listing-date">
-Feb 7, 2025
-</div>
-<div class="listing-author">
-Grace Kneidel
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="cHJvbXB0aW5n" data-listing-date-sort="1738368000000" data-listing-file-modified-sort="1739663383068" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="468">
-<div class="thumbnail">
-<p><a href="./posts/001_housing_data.html" class="no-external"></a></p><a href="./posts/001_housing_data.html" class="no-external">
-<p class="card-img-top"><img src="posts/001_housing_data_files/figure-html/15017c3a-0c34-47d1-a891-cb36bd75f242-1-1115727a-53d3-4362-9ff9-1420fc403337.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/001_housing_data.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/001_housing_data.html" class="no-external">Can ChatGPT help me open the correct PDF?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/001_housing_data.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('cHJvbXB0aW5n'); return false;">
-prompting
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/001_housing_data.html" class="no-external">It turns out to be quite the challenge.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/001_housing_data.html" class="no-external">
-<div class="listing-date">
-Feb 1, 2025
-</div>
-<div class="listing-author">
-Grace Kneidel
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
