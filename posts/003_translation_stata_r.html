@@ -188,13 +188,13 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="anchored" data-anchor-id="step-1-generate-simple-stata-code">Step 1: Generate simple Stata code</h5>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-2-87a71a9e-7f12-40f5-acac-a7759419d1b9.png" class="img-fluid figure-img"></p>
+<p><img src="003_translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-2-87a71a9e-7f12-40f5-acac-a7759419d1b9.png" class="img-fluid figure-img"></p>
 <figcaption>Off to a good start</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-1-66fd83c2-4019-4092-ae94-7ad4ed1b3a72.png" class="img-fluid figure-img"></p>
+<p><img src="003_translation_stata_r_files/figure-html/608a35a1-6656-46d7-9878-0b6b966959dd-1-66fd83c2-4019-4092-ae94-7ad4ed1b3a72.png" class="img-fluid figure-img"></p>
 <figcaption>Love the default colors!</figcaption>
 </figure>
 </div>
@@ -208,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Eventually, I gave up and just troubleshooted the code that it outputted myself. I think ChatGPT was getting really excited about making the code needlessly complex, so it kept trying to add <strong>ALL</strong> the graphing options when that wasn’t actually allowed.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="translation_stata_r_files/figure-html/9cadf186-cc70-4731-ae80-8ed2b192549e-1-7eecdb38-79db-4541-b626-e262a264c6d7.png" class="img-fluid figure-img"></p>
+<p><img src="003_translation_stata_r_files/figure-html/9cadf186-cc70-4731-ae80-8ed2b192549e-1-7eecdb38-79db-4541-b626-e262a264c6d7.png" class="img-fluid figure-img"></p>
 <figcaption>Our needlessly complicated Stata histogram</figcaption>
 </figure>
 </div>
@@ -217,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="anchored" data-anchor-id="step-3-translate-to-r-in-the-simplest-way-possible">Step 3: Translate to R in the simplest way possible</h5>
 <p>Time to ask another variation of Phoenix and Taylor’s prompt. In the same window, I said:</p>
 <p><em>Now transform the Stata code into a simple, easy to read format that’s in R code , make sure that it is very easy to understand and read. You must ensure that it is as simple to comprehend as possible.</em></p>
-<p>ChatGPT did great here. Easy breezy, our histogram is now in R.<img src="translation_stata_r_files/figure-html/a7c14322-1599-480c-80a6-3ff7e337d3eb-1-46363e0c-e054-4014-85e9-e2ef7f194f0a.png" class="img-fluid"></p>
+<p>ChatGPT did great here. Easy breezy, our histogram is now in R.<img src="003_translation_stata_r_files/figure-html/a7c14322-1599-480c-80a6-3ff7e337d3eb-1-46363e0c-e054-4014-85e9-e2ef7f194f0a.png" class="img-fluid"></p>
 </section>
 <section id="translate-back-to-stata" class="level5">
 <h5 class="anchored" data-anchor-id="translate-back-to-stata">4. Translate back to Stata</h5>
@@ -226,19 +226,19 @@ ul.task-list li input[type="checkbox"] {
 <p><em>You’re absolutely right! In Stata, the <code>edgecolor()</code> option is not available for histograms. To correct that and ensure the code runs smoothly, I’ll remove that option and simplify the command while keeping it easy to understand.</em></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="translation_stata_r_files/figure-html/1d3dffdc-24c0-4526-8aff-781da07a4cfe-1-a16933d0-da97-4d45-96cf-5b5b9afcca40.png" class="img-fluid figure-img"></p>
+<p><img src="003_translation_stata_r_files/figure-html/1d3dffdc-24c0-4526-8aff-781da07a4cfe-1-a16933d0-da97-4d45-96cf-5b5b9afcca40.png" class="img-fluid figure-img"></p>
 <figcaption>Not quite a breeze</figcaption>
 </figure>
 </div>
 <p>After this correction, the code did run, but ChatGPT forgot to add the frequency option, so the data y axis shows the probability of each outcome from 0 to 0.5. But the y axis labels are still set to reflect frequency. It’s not a good look!</p>
-<p><img src="translation_stata_r_files/figure-html/7b038c12-e7de-4860-808b-8d257f40bf8d-1-39a7dacd-05a3-4b6e-9822-2aac15f558e6.png" class="img-fluid"></p>
+<p><img src="003_translation_stata_r_files/figure-html/7b038c12-e7de-4860-808b-8d257f40bf8d-1-39a7dacd-05a3-4b6e-9822-2aac15f558e6.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="conclusion" class="level4">
 <h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
 <p>While ChatGPT was capable of performing the basic code translation tasks, it needed a lot of correction. It seemed to be a lot less comfortable working with Stata than with R. It’s true that R is open source and Stata isn’t, but I expected better results because Stata has been around for a long time. For reference, ChatGPT tells me that the first official version of R was released in February 2000, while Stata 1.0 was released in 1985.</p>
 <p>When pressed about its relative amounts of training data, ChatGPT did confess that it had more access to R data- though who knows if that is the truth.</p>
-<p><img src="translation_stata_r_files/figure-html/cbe2f32a-1411-41c0-a29d-8e81e26c5569-1-36b5669e-fe8f-4e49-8a0a-84683e38d66f.png" class="img-fluid"></p>
+<p><img src="003_translation_stata_r_files/figure-html/cbe2f32a-1411-41c0-a29d-8e81e26c5569-1-36b5669e-fe8f-4e49-8a0a-84683e38d66f.png" class="img-fluid"></p>
 <div class="alert alert-block alert-success">
 <p><b>A final note:</b> I had never before seen the Stata command that kept throwing me errors from the AI-generated responses. As far as I can tell, this command, <code>edgecolor</code>, is exclusively found in MATLAB syntax!</p>
 </div>

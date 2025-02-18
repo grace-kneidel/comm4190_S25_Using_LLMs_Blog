@@ -2,7 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/translation_stata_r.html",
+      "/posts/004_read_housing_data.html",
+      "/posts/003_translation_stata_r.html",
       "/posts/002_water.html",
       "/posts/001_housing_data.html"
     ]
