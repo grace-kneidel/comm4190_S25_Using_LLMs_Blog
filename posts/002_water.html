@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="the-test">The test</h2>
 <section id="part-1-gpt-4o" class="level3">
 <h3 class="anchored" data-anchor-id="part-1-gpt-4o">Part 1: gpt-4o</h3>
-<div id="ff4422d9-449d-4b72-807f-4f8f06853510" class="cell" data-execution_count="42">
+<div id="ff4422d9-449d-4b72-807f-4f8f06853510" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> load_dotenv()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="50685982-7dde-480e-a228-ebf33154b888" class="cell" data-execution_count="43">
+<div id="50685982-7dde-480e-a228-ebf33154b888" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
@@ -226,9 +226,171 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: initial_prompt},</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "assistant", "content": "" },</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "user", "content": "" }</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span>model,        <span class="co"># the model to use </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>messages,  <span class="co"># a list of dictionaries with the prompt</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  n<span class="op">=</span><span class="dv">3</span>,                <span class="co"># how many responses to generate</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  temperature<span class="op">=</span><span class="fl">0.7</span>     <span class="co"># temperature parameter</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<div id="849cc5ec-0e26-4e96-a31b-4a60314f24ab" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="12">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rnum, resp <span class="kw">in</span> <span class="bu">enumerate</span>(completion.choices,<span class="dv">1</span>): </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="ss">f'-----</span><span class="ch">\n</span><span class="ss">#### Response </span><span class="sc">{</span>rnum<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>resp<span class="sc">.</span>message<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-1" class="level4">
+<h4 class="anchored" data-anchor-id="response-1">Response 1</h4>
+<p><strong>Knowledge Cutoff:</strong> October 2023</p>
+<p>The environmental impact of each large language model (LLM) query, specifically in terms of water usage, can be relatively small when compared to other daily activities. According to recent estimates, processing a single LLM query can consume approximately 0.001 liters of water, accounting for the water used in cooling data centers and powering the necessary computing infrastructure (Patterson et al., 2023). In contrast, activities like brushing your teeth with the tap running can use around 7.5 to 15 liters of water per session (U.S. EPA). This comparison indicates that a single LLM query has a significantly lower water footprint than such common water-intensive activities. Nonetheless, as the use of LLMs scales globally, their cumulative environmental impact becomes more pronounced. This underscores the importance of optimizing data center efficiency and exploring sustainable practices in AI development to mitigate broader environmental effects.</p>
+<p><strong>Sources:</strong> - Patterson, D., et al.&nbsp;(2023). “The Carbon Footprint of Machine Learning.” Proceedings of the Conference on Machine Learning and Climate Change. - U.S. Environmental Protection Agency (EPA). “WaterSense: Brushing Your Teeth.” <a href="https://www.epa.gov/watersense">EPA.gov</a></p>
+</section>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-2" class="level4">
+<h4 class="anchored" data-anchor-id="response-2">Response 2</h4>
+<p><strong>Knowledge Cutoff:</strong> October 2023</p>
+<p>The environmental impact of a single Large Language Model (LLM) query, such as those processed by cutting-edge AI systems, primarily revolves around energy consumption and associated carbon emissions rather than direct water usage. The energy required for a single LLM query is typically measured in terms of kilowatt-hours (kWh), which indirectly relates to water usage through the cooling processes of data centers and energy production. According to recent estimates, each LLM query consumes approximately 0.0003 kWh of energy (Strubell et al., 2019). In comparison, brushing your teeth with water running for two minutes uses about 4 gallons (15.1 liters) of water (EPA, 2023). While the exact water footprint of a single LLM query is difficult to quantify in isolation due to variations in data center efficiencies and energy grids, it is substantially less direct than the tangible water usage involved in daily activities like tooth brushing. However, as LLM utilization scales globally, the cumulative environmental impact becomes significant, prompting calls for more sustainable AI practices and energy sources.</p>
+</section>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-3" class="level4">
+<h4 class="anchored" data-anchor-id="response-3">Response 3</h4>
+<p><strong>Knowledge Cutoff:</strong> October 2023</p>
+<p>The environmental impact of each Large Language Model (LLM) query is primarily associated with the energy consumption required to power the data centers that host these models. Recent estimates suggest that a single query to an LLM consumes approximately 0.0003 kWh of energy, which translates to a very small carbon footprint. In terms of water usage, this energy consumption indirectly reflects water use, as water is often used for cooling data centers. According to a study by Strubell et al.&nbsp;(2019), the water footprint for a single AI query is quite minimal, comparable to a few milliliters of water. To provide context, brushing your teeth with the tap running can use around 7.5 liters of water per minute. Thus, the water footprint of an LLM query is vastly smaller. However, when scaled up to millions of queries, the cumulative impact becomes significant, highlighting the importance of developing more energy-efficient algorithms and infrastructure (Strubell et al., 2019; Google AI, 2021).</p>
+<p><strong>Sources:</strong></p>
+<ul>
+<li>Strubell, E., Ganesh, A., &amp; McCallum, A. (2019). Energy and Policy Considerations for Deep Learning in NLP. <em>arXiv preprint arXiv:1906.02243</em>.</li>
+<li>Google AI Blog (2021). Our commitment to sustainability through AI. <a href="https://ai.googleblog.com/2021/05/our-commitment-to-sustainability.html">Link</a></li>
+</ul>
+</section>
+</div>
+</div>
+<p>Wow! These estimates vary a lot, from 0.5 liters to 0.0005 liters.</p>
+</section>
+<section id="part-2-gpt-3.5-turbo" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-gpt-3.5-turbo">Part 2: gpt-3.5-turbo</h3>
+<div id="8bc511ec-7d98-4ba2-abae-25f0d1326520" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="st">"gpt-3.5-turbo"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: system_role} ,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: initial_prompt},</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "assistant", "content": "" },</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># {"role": "user", "content": "" }</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span>model,        <span class="co"># the model to use </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>messages,  <span class="co"># a list of dictionaries with the prompt</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  n<span class="op">=</span><span class="dv">3</span>,                <span class="co"># how many responses to generate</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  temperature<span class="op">=</span><span class="fl">0.7</span>     <span class="co"># temperature parameter</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="64ceb84b-9949-45e9-b173-b8850c060d41" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="14">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rnum, resp <span class="kw">in</span> <span class="bu">enumerate</span>(completion.choices,<span class="dv">1</span>): </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="ss">f'-----</span><span class="ch">\n</span><span class="ss">#### Response </span><span class="sc">{</span>rnum<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> </span><span class="sc">{</span>resp<span class="sc">.</span>message<span class="sc">.</span>content<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-1-1" class="level4">
+<h4 class="anchored" data-anchor-id="response-1-1">Response 1</h4>
+<p>Knowledge cutoff: October 2021</p>
+<ol type="1">
+<li>Query: “How much water is used to produce one pound of beef?”</li>
+</ol>
+<p>The environmental impact of producing one pound of beef is significant in terms of water usage. According to recent studies, it is estimated that approximately 1,799 gallons of water are required to produce one pound of beef, taking into account water used for feed production, drinking water for the animals, and processing. This high water usage is mainly attributed to the water-intensive nature of growing feed crops for livestock and providing water for the animals throughout their life cycle. To put this into perspective, the water used to produce one pound of beef is roughly equivalent to the amount of water an average person would use for brushing their teeth daily for over two and a half years.</p>
+<p>Sources: - Mekonnen, M.M. and Hoekstra, A.Y. (2012). A Global Assessment of the Water Footprint of Farm Animal Products. Ecosystems, 15(3), 401-415.</p>
+<ol start="2" type="1">
+<li>Query: “How much water is used to produce one cotton t-shirt?”</li>
+</ol>
+<p>The environmental impact of producing one cotton t-shirt in terms of water usage is substantial. Recent data suggests that approximately 713 gallons of water are needed to produce one cotton t-shirt, accounting for water used in growing cotton plants, processing the fibers, and dyeing the fabric. The water footprint of cotton production is particularly high due to the crop’s demand for irrigation and the water-intensive processes involved in turning raw cotton into a finished garment. To provide context, the water used to make one cotton t-shirt is equivalent to the amount of water an individual would use for brushing their teeth daily for almost 4 years.</p>
+<p>Sources: - Mekonnen, M.M. and Hoekstra, A.Y. (2011). The Green, Blue and Grey Water Footprint of Crops and Derived Crop Products. Hydrology and Earth System Sciences, 15(5), 1577-1600.</p>
+</section>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-2-1" class="level4">
+<h4 class="anchored" data-anchor-id="response-2-1">Response 2</h4>
+<p>Knowledge cutoff: September 2021</p>
+<ol type="1">
+<li><p><strong>LLM query: “How much water is used to produce one almond?”</strong></p>
+<p>The environmental impact of producing one almond is significant due to the high water intensity of almond cultivation. According to a study by the University of California, it takes approximately 1.1 gallons of water to produce a single almond. This is primarily because almond trees require a substantial amount of water to grow, especially in regions with arid climates where they are predominantly cultivated. To put this into context, producing one almond is equivalent to the amount of water used by brushing your teeth for about 10 minutes. The water footprint of almonds has raised concerns about the sustainability of almond farming, particularly in water-stressed regions like California where a large percentage of the world’s almonds are grown.</p></li>
+<li><p><strong>LLM query: “How much water is used to produce one avocado?”</strong></p>
+<p>The environmental impact of producing one avocado is also notable in terms of water usage. According to research published in the journal Water, it takes around 72 gallons of water to produce a single avocado. Avocado trees are known to be water-intensive crops, requiring significant irrigation to support their growth and yield. To put this in perspective, the water footprint of one avocado is equivalent to the amount of water used by brushing your teeth for approximately 170 times. This highlights the substantial water footprint of avocados and underscores the importance of considering the environmental impact of consuming water-intensive foods like avocados, especially in regions facing water scarcity challenges.</p></li>
+<li><p><strong>LLM query: “How much water is used to produce one pound of beef?”</strong></p>
+<p>The environmental impact of producing one pound of beef is notably high in terms of water consumption. According to a report by the Water Footprint Network, it takes approximately 1,800 gallons of water to produce one pound of beef. This is primarily due to the water needed for livestock drinking, irrigation of animal feed crops, and meat processing. To provide context, the water footprint of one pound of beef is equivalent to the amount of water used by brushing your teeth for about 3,600 times. The substantial water footprint of beef production has raised concerns about the sustainability of meat consumption, particularly as global demand for animal products continues to rise and water resources become increasingly strained.</p></li>
+</ol>
+</section>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">#### Response 3 Knowledge cutoff: September 2021</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">#### Response 1 <strong>My knowledge cutoff is October 2023.</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Recent studies indicate that while the training phase of large language models (LLMs) is highly energy intensive, the inference phase—i.e.&nbsp;processing a single query—generally consumes only a few milli‐kilowatt‐hours, resulting in an extremely modest direct water footprint when considering data center cooling. For instance, estimates suggest that generating 1 kWh of electricity in thermoelectric plants may involve roughly 2–3 liters of water (U.S. Environmental Protection Agency, 2019)[1]; thus, an inference operation consuming around 0.001 kWh might indirectly “use” only about 0.002–0.003 liters of water. In comparison, a typical tooth brushing episode may use 2–3 liters of water (Hoekstra et al., 2011)[2], which puts the water intensity of a single LLM query into stark perspective. Although the cumulative environmental impact of millions of such queries should not be overlooked, on an individual basis the direct water usage is negligible relative to everyday activities like brushing your teeth.</td>
+</tr>
+</tbody>
+</table>
+<p>[1] U.S. Environmental Protection Agency. (2019). Water Use in Electricity Production.<br>
+[2] Hoekstra, A. Y., et al.&nbsp;(2011). The Water Footprint Assessment Manual. UNESCO.</p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-2-2" class="level4">
+<h4 class="anchored" data-anchor-id="response-2-2">Response 2</h4>
+<p><strong>Knowledge Cutoff:</strong> October 2023</p>
+<p>Recent studies indicate that while the energy consumption—and hence the indirect water usage via cooling—of large language model (LLM) queries is not negligible at scale, the water footprint per individual query is extremely small compared to everyday water-intensive activities. Data centers commonly use water-cooled systems to manage heat generated by servers, and estimates suggest that a single query could be responsible for the equivalent of only a few milliliters of water usage when averaged over billions of queries (see, for example, analyses in the work by Patterson et al.&nbsp;(2021) and reports from the Uptime Institute). In contrast, everyday activities like brushing your teeth typically involve running taps that dispense roughly 2 liters of water per minute—so a two-minute brushing session easily uses around 4 liters of water. Thus, while LLM queries do contribute to a data center’s overall environmental impact (through both energy consumption and the associated water use for cooling), the water cost per individual query is orders of magnitude lower than that of a simple daily habit, highlighting the benefits of operational efficiencies realized at scale.</p>
+<p><strong>Sources:</strong><br>
+- Patterson, D., et al.&nbsp;(2021). “Energy and Policy Considerations for Deep Learning in NLP.”<br>
+- Uptime Institute Reports on Data Center Water Usage.<br>
+- U.S. EPA Guidelines on Residential Water Use.</p>
+</section>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<hr>
+<section id="response-3-1" class="level4">
+<h4 class="anchored" data-anchor-id="response-3-1">Response 3</h4>
+<p><strong>Knowledge Cutoff:</strong> My knowledge cutoff is October 2023.</p>
+<p>A single LLM query—such as one processed by a large language model like ChatGPT—is estimated to consume on the order of 0.01 kilowatt-hours (kWh) or less in electricity, with the associated water usage for data center cooling being spread thinly across millions of queries. Modern data centers, which may require roughly 1.8 liters of water per kWh for cooling (according to estimates from sources like the Uptime Institute and research from the Lawrence Berkeley National Laboratory), translate this energy consumption into only a few milliliters of water per query. In contrast, a typical toothbrushing session uses about 2 to 4 liters of water (Water Research Foundation, 2020), highlighting that while the environmental impact per individual LLM query is modest—especially in terms of water use—the aggregated effect of billions of queries can become significant in energy demand and resource consumption. Such comparisons underscore the importance of advancing energy and water-efficient data center operations as digital tasks increasingly scale in our internet-driven world (Strubell et al., 2019; Patterson et al., 2021).</p>
+</section>
+</div>
+</div>
+<p>Interesting how these cite primarily the EPA and papers from many years ago.</p>
+</section>
+<section id="so-whats-the-correct-answer" class="level3">
+<h3 class="anchored" data-anchor-id="so-whats-the-correct-answer">So what’s the <em>correct</em> answer?</h3>
+<p>There is none, and that’s part of why I thought this exercise was fun.</p>
+<p>One <a href="https://e360.yale.edu/features/artificial-intelligence-climate-energy-emissions">study</a> from Yale in February 2024 suggests that “a person who engages in a session of questions and answers with GPT-3 (roughly 10 to 50 responses) drives the consumption of a half-liter of fresh water”.</p>
+<p>So if we do the math based on this one estimate, each query is somewhere between 0.05 and 0.01 liters of water. But this may vary a lot for other LLM models, too. It seems that the models with later knowledge cutoffs (gpt-4o and o3-mini) were much better at understanding this.</p>
 
 
 </section>
