@@ -68,9 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -155,23 +152,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Today, I’m excited to experiment with generative AI’s ability to write code for SVGs.</p>
 <section id="the-plan" class="level3">
 <h3 class="anchored" data-anchor-id="the-plan">The plan</h3>
-<pre><code>
-```{mermaid}
-flowchart LR
-  A[1. Ask Claude to make me SVGs of economists] --&gt; B[2. Ask GPT-4o what job the cartoon in the SVG depicts]</code></pre>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[3. Ask GPT-4o if it thinks the cartoon is a man or woman] --&gt; B[4. Ask Claude to make me cartoons of economists who are women]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<p>```</p>
+<ol type="1">
+<li><p>Ask Claude to make me SVGs of economists</p></li>
+<li><p>Ask GPT-4o what job the cartoon in the SVG depicts</p></li>
+<li><p>Ask GPT-4o if it thinks the cartoon is a man or woman</p></li>
+<li><p>Ask Claude to make me cartoons of economists who are women</p></li>
+</ol>
 <section id="ask-claude-to-make-me-svgs-of-economists" class="level4">
 <h4 class="anchored" data-anchor-id="ask-claude-to-make-me-svgs-of-economists">1. Ask Claude to make me SVGs of economists</h4>
 <p>I prompted Claude “Please make code for an svg of an economist”, intentionally keeping the prompt vague to see what Claude thought economists looked like. I then regenerated the response 4 times. I found the responses to be pretty funny. Here’s an example of the prompt and response. <img src="005_economist_svg_files/figure-html/15102702-b16d-4e30-ac6a-7b0e3175848a-1-c08a12a5-9234-4a0a-a294-53e6cb8597d7.png" class="img-fluid"></p>
@@ -206,7 +193,12 @@ flowchart LR
 <figcaption>Economist 5!</figcaption>
 </figure>
 </div>
-<p>My main takeaways: * For simple SVG images, these images are pretty complex. Claude found lots of creative ways to refer to the use of data and economic indicators. * Claude does not seem to be very good at making SVGs where hair is properly placed on one’s head. Economist 4’s pointers are also pretty funny. * These all look pretty masculine to me.</p>
+<p>My main takeaways:</p>
+<ul>
+<li><p>For simple SVG images, these images are pretty complex. Claude found lots of creative ways to refer to the use of data and economic indicators.</p></li>
+<li><p>Claude does not seem to be very good at making SVGs where hair is properly placed on one’s head. Economist 4’s pointers are also pretty funny.</p></li>
+<li><p>These all look pretty masculine to me.</p></li>
+</ul>
 </section>
 <section id="ask-gpt-4o-what-job-the-cartoon-in-the-svg-depicts" class="level4">
 <h4 class="anchored" data-anchor-id="ask-gpt-4o-what-job-the-cartoon-in-the-svg-depicts">2. Ask GPT-4o what job the cartoon in the SVG depicts</h4>
@@ -245,7 +237,11 @@ flowchart LR
 </tr>
 </tbody>
 </table>
-<p>My main takeaways: * ChatGPT did a pretty good job with all of these. All the proposed jobs seem reasonable. * Economic terminology like GDP and currency symbols indicated being an economist the most.</p>
+<p>My main takeaways:</p>
+<ul>
+<li><p>ChatGPT did a pretty good job with all of these. All the proposed jobs seem reasonable.</p></li>
+<li><p>Economic terminology like GDP and currency symbols indicated being an economist the most.</p></li>
+</ul>
 <p>I agree with ChatGPT that SVGs 2 and 5 look especially like economists.</p>
 </section>
 <section id="ask-gpt-4o-if-it-thinks-the-cartoon-is-a-man-or-woman" class="level4">
