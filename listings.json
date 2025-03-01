@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/007_deepseek.html",
       "/posts/006_neighborhoods.html",
       "/posts/005_economist_svg.html",
       "/posts/004_read_housing_data.html",

@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
-    <lastmod>2025-02-24T01:51:19.011Z</lastmod>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/003_translation_stata_r.html</loc>
+    <lastmod>2025-03-01T01:08:06.704Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/007_deepseek.html</loc>
+    <lastmod>2025-03-01T01:08:06.711Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/004_read_housing_data.html</loc>
-    <lastmod>2025-02-24T01:51:19.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/005_economist_svg.html</loc>
-    <lastmod>2025-02-24T01:51:19.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/002_water.html</loc>
-    <lastmod>2025-02-24T01:51:19.016Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
-    <lastmod>2025-02-24T01:51:19.011Z</lastmod>
+    <lastmod>2025-03-01T01:08:06.706Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/006_neighborhoods.html</loc>
-    <lastmod>2025-02-24T01:51:19.024Z</lastmod>
+    <lastmod>2025-03-01T01:08:06.709Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
+    <lastmod>2025-03-01T01:08:06.699Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
+    <lastmod>2025-03-01T01:08:06.699Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_housing_data.html</loc>
-    <lastmod>2025-02-24T01:51:19.015Z</lastmod>
+    <lastmod>2025-03-01T01:08:06.702Z</lastmod>
   </url>
   <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/003_translation_stata_r.html</loc>
-    <lastmod>2025-02-24T01:51:19.018Z</lastmod>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/005_economist_svg.html</loc>
+    <lastmod>2025-03-01T01:08:06.709Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/002_water.html</loc>
+    <lastmod>2025-03-01T01:08:06.702Z</lastmod>
   </url>
 </urlset>
