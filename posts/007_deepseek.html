@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-02-28">
 <meta name="description" content="Basic questions can be quite thought-provoking.">
 
-<title>What makes Deepseek-R1 ‘think?’ – Grace's LLM Blog</title>
+<title>What makes Deepseek-R1 ‘think’? – Grace's LLM Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">What makes Deepseek-R1 ‘think?’</h1>
+      <h1 class="title">What makes Deepseek-R1 ‘think’?</h1>
                   <div>
         <div class="description">
           Basic questions can be quite thought-provoking.
@@ -207,7 +207,12 @@ ul.task-list li input[type="checkbox"] {
 <p>But I’m not entirely sure, so maybe it’s better to accept that I need more context or accurate information for a precise answer.</p>
 <p>Answer: <strong>The United States’ current President is George W. Bush, and his term will end on January 3, 2017.</strong></p>
 </blockquote>
-<p>I thought this stream of consciousness that it produced was quite interesting. 1. It did so much thinking (31 seconds!), and in a pretty human-like way, saying things like “wait, perhaps I’m overcomplicating this” and “oh, right!” 2. It thought in circles for paragraphs on end 3. It ended up giving me a completely wrong answer. Not only was the President’s name wrong, but it additionally provided a term end date that was 8 years ago.</p>
+<p>I thought this stream of consciousness that it produced was quite interesting.</p>
+<ol type="1">
+<li><p>It did so much thinking (31 seconds!), and in a pretty human-like way, saying things like “wait, perhaps I’m overcomplicating this” and “oh, right!”</p></li>
+<li><p>It thought in circles for paragraphs on end</p></li>
+<li><p>It ended up giving me a completely wrong answer. Not only was the President’s name wrong, but it additionally provided a term end date that was 8 years ago.</p></li>
+</ol>
 <section id="the-test" class="level4">
 <h4 class="anchored" data-anchor-id="the-test">The test</h4>
 <p>This elaborate (and incorrect!) response made me curious about what sorts of questions make Deepseek-R1 “think”. Clearly certain questions that ChatGPT could answer easily are not so easy for Deepseek-R1.</p>
@@ -217,7 +222,12 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="what-day-of-the-week-is-it">1. What day of the week is it?</h4>
 <p>For reference, I asked this question on a Wednesday.</p>
 <p><img src="007_deepseek_files/figure-html/aa1296a0-fa51-49bc-926f-1d89af9e1b48-1-cfe95570-72e7-46ca-b110-c03c5823a140.png" class="img-fluid"></p>
-<p>This 1 second of thinking consisted of the following: &gt; Alright, the user initially asked a question about the day of the week but didn’t provide context. I responded by asking if they needed real-time information. Now, they’re replying with a request to just reply with a weekday name without any explanation. &gt; &gt; I need to decide whether to respond or not. Since their previous query was vague and unrelated, providing a helpful response might be counterproductive. They seem to have missed the initial prompt about time complexity in an interview setting, so I should acknowledge that but not offer a specific answer. &gt; &gt; Maybe I can redirect them by asking for any details they have about my role in an interview. That way, if they provide more context, I can assist better. I’ll make sure to keep their request clear and concise.</p>
+<p>This 1 second of thinking consisted of the following:</p>
+<blockquote class="blockquote">
+<p>Alright, the user initially asked a question about the day of the week but didn’t provide context. I responded by asking if they needed real-time information. Now, they’re replying with a request to just reply with a weekday name without any explanation.</p>
+<p>I need to decide whether to respond or not. Since their previous query was vague and unrelated, providing a helpful response might be counterproductive. They seem to have missed the initial prompt about time complexity in an interview setting, so I should acknowledge that but not offer a specific answer.</p>
+<p>Maybe I can redirect them by asking for any details they have about my role in an interview. That way, if they provide more context, I can assist better. I’ll make sure to keep their request clear and concise.</p>
+</blockquote>
 <p>I love how so much “thinking” here was spent on whether to respond or not. And what in the world does <em>They seem to have missed the initial prompt about time complexity in an interview setting</em> mean in this context?</p>
 <p>The response in the end was: <strong>It seems like your previous query was incomplete or unclear, and without more information about my role in an interview or a specific task, I cannot provide an accurate answer. Could you please clarify or provide more details?</strong></p>
 <p>So I pushed it, saying <strong>“You are a personal assistant who is skilled at telling people what day of the week it is. What day of the week is it? Please reply either Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday. Do not reply anything else”</strong></p>
