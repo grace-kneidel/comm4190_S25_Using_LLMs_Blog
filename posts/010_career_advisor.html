@@ -193,6 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level4">
 <h4 class="anchored" data-anchor-id="introduction">Introduction</h4>
 <p>I’ve been doing lots of thinking about the next steps in my career recently, and a big part of the process has been brainstorming. So far, I’ve brainstormed with lots of humans, but I’m curious what a <code>langgraph</code> chatbot would be able to provide in the way of advice.</p>
+<div id="8400f7d8-a088-49af-864c-a279a44cbf51" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Annotated</span>
@@ -210,11 +211,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> load_dotenv()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div id="df67828e-f536-408e-bdc3-f1a342cf511f" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> State(TypedDict):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    messages: Annotated[<span class="bu">list</span>, add_messages]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div id="ffca6734-4b64-495d-b375-ab49c7b826b1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -232,6 +237,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graph_builder.<span class="bu">compile</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div id="6ff9a43b-d617-4fef-a44f-52cb47646a56" class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stream_graph_updates(user_input: <span class="bu">str</span>):</span>
@@ -255,87 +262,112 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        stream_graph_updates(user_input)</span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdin">
 <pre><code>User:  Hi! Can you help me figure out what the next step in my career should be? </code></pre>
-<p>Assistant: Of course! I’d be happy to help you think through your next career move. To provide the most helpful advice, I’ll need some additional information about your current situation and goals. Could you please share:</p>
-<ol type="1">
-<li>Your current job title and industry</li>
-<li>Your educational background</li>
-<li>Your key skills and strengths</li>
-<li>Your career goals or areas of interest</li>
-<li>Any specific challenges or concerns you’re facing in your current role</li>
-<li>How long you’ve been in your current position</li>
-<li>Any particular industries or roles you’re curious about</li>
-</ol>
-<p>Once you provide this information, I can offer more tailored suggestions for your next career step.</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Assistant: Of course! I'd be happy to help you think through your next career move. To provide the most helpful advice, I'll need some additional information about your current situation and goals. Could you please share:
+
+1. Your current job title and industry
+2. Your educational background
+3. Your key skills and strengths
+4. Your career goals or areas of interest
+5. Any specific challenges or concerns you're facing in your current role
+6. How long you've been in your current position
+7. Any particular industries or roles you're curious about
+
+Once you provide this information, I can offer more tailored suggestions for your next career step.</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
 <pre><code>User:  1. I currently work full-time as a research assistant in an academic environment. I write code for academic economics papers. 2. I have a degree in mathematical economics 3. I can code well, especially in Stata, and I like talking to people. 4. I want a job where I can use both soft skills and data to make a positive impact. 5. None 6. 2 years 7. I want a job where I: don't forget how to code, but have frequent meetings and travel about quarterly to meet new people. </code></pre>
-<p>Assistant: Based on the information you’ve provided, here are some job suggestions that might align with your skills, experience, and preferences:</p>
-<ol type="1">
-<li>Data Analyst in Consulting:
-<ul>
-<li>Utilizes your coding skills and economics background</li>
-<li>Involves frequent meetings with clients</li>
-<li>Often includes travel for client presentations or data gathering</li>
-<li>Allows you to make data-driven recommendations for positive impact</li>
-</ul></li>
-<li>Economic Consultant:
-<ul>
-<li>Leverages your economics degree and research experience</li>
-<li>Requires both analytical and communication skills</li>
-<li>Often involves travel to meet clients or attend conferences</li>
-<li>Allows you to work on diverse projects with potential for positive impact</li>
-</ul></li>
-<li>Business Intelligence Analyst:
-<ul>
-<li>Uses your coding and data analysis skills</li>
-<li>Involves presenting findings to stakeholders (soft skills)</li>
-<li>May include some travel for meetings or conferences</li>
-<li>Helps organizations make data-driven decisions for improvement</li>
-</ul></li>
-<li>Policy Researcher/Analyst:
-<ul>
-<li>Applies your economics background and research skills</li>
-<li>Involves communicating findings to policymakers and the public</li>
-<li>May include travel for fieldwork or conferences</li>
-<li>Allows you to work on projects aimed at positive societal impact</li>
-</ul></li>
-<li>Data Scientist in Non-Profit or Social Enterprise:
-<ul>
-<li>Utilizes your coding and analytical skills</li>
-<li>Involves collaborating with diverse teams and stakeholders</li>
-<li>May include travel for projects or conferences</li>
-<li>Directly contributes to positive social or environmental impact</li>
-</ul></li>
-<li>Product Analyst in Tech:
-<ul>
-<li>Uses your coding and analytical skills</li>
-<li>Involves frequent meetings with product teams and stakeholders</li>
-<li>May include some travel for user research or team meetings</li>
-<li>Allows you to contribute to product improvements that benefit users</li>
-</ul></li>
-</ol>
-<p>These roles would allow you to maintain and develop your coding skills while also leveraging your soft skills through frequent meetings and interactions. They also offer opportunities for occasional travel and the potential to make a positive impact through data-driven decision-making.</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Assistant: Based on the information you've provided, here are some job suggestions that might align with your skills, experience, and preferences:
+
+1. Data Analyst in Consulting:
+   - Utilizes your coding skills and economics background
+   - Involves frequent meetings with clients
+   - Often includes travel for client presentations or data gathering
+   - Allows you to make data-driven recommendations for positive impact
+
+2. Economic Consultant:
+   - Leverages your economics degree and research experience
+   - Requires both analytical and communication skills
+   - Often involves travel to meet clients or attend conferences
+   - Allows you to work on diverse projects with potential for positive impact
+
+3. Business Intelligence Analyst:
+   - Uses your coding and data analysis skills
+   - Involves presenting findings to stakeholders (soft skills)
+   - May include some travel for meetings or conferences
+   - Helps organizations make data-driven decisions for improvement
+
+4. Policy Researcher/Analyst:
+   - Applies your economics background and research skills
+   - Involves communicating findings to policymakers and the public
+   - May include travel for fieldwork or conferences
+   - Allows you to work on projects aimed at positive societal impact
+
+5. Data Scientist in Non-Profit or Social Enterprise:
+   - Utilizes your coding and analytical skills
+   - Involves collaborating with diverse teams and stakeholders
+   - May include travel for projects or conferences
+   - Directly contributes to positive social or environmental impact
+
+6. Product Analyst in Tech:
+   - Uses your coding and analytical skills
+   - Involves frequent meetings with product teams and stakeholders
+   - May include some travel for user research or team meetings
+   - Allows you to contribute to product improvements that benefit users
+
+These roles would allow you to maintain and develop your coding skills while also leveraging your soft skills through frequent meetings and interactions. They also offer opportunities for occasional travel and the potential to make a positive impact through data-driven decision-making.</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
 <pre><code>User:  Hmmmm. Ok, this is helpful. Something else to consider is that I only have a bachelor's degree. If I wanted to work for a few years and then earn an MBA, which of these jobs do you think would suit me best and why? </code></pre>
-<p>Assistant: I apologize, but I don’t have any previous context about specific jobs we might have discussed earlier. Without knowing which jobs you’re referring to, I can’t provide a comparison or recommendation.</p>
-<p>However, I can offer some general advice about preparing for an MBA:</p>
-<ol type="1">
-<li><p>Business-related roles: Any job that exposes you to business operations, strategy, finance, or management would be beneficial before pursuing an MBA.</p></li>
-<li><p>Leadership experience: Roles that allow you to lead teams or projects can be valuable for MBA applications and future career growth.</p></li>
-<li><p>Analytical skills: Jobs that involve data analysis, problem-solving, and decision-making are often viewed favorably by MBA programs.</p></li>
-<li><p>Industry exposure: Working in an industry you’re passionate about can help you develop specialized knowledge and determine your post-MBA career path.</p></li>
-<li><p>Networking opportunities: Positions that allow you to interact with diverse professionals can help build your network, which is crucial for MBA success and beyond.</p></li>
-</ol>
-<p>If you’d like to provide more information about the specific jobs you’re considering, I’d be happy to offer more tailored advice on which might be best suited for your MBA aspirations.</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Assistant: I apologize, but I don't have any previous context about specific jobs we might have discussed earlier. Without knowing which jobs you're referring to, I can't provide a comparison or recommendation.
+
+However, I can offer some general advice about preparing for an MBA:
+
+1. Business-related roles: Any job that exposes you to business operations, strategy, finance, or management would be beneficial before pursuing an MBA.
+
+2. Leadership experience: Roles that allow you to lead teams or projects can be valuable for MBA applications and future career growth.
+
+3. Analytical skills: Jobs that involve data analysis, problem-solving, and decision-making are often viewed favorably by MBA programs.
+
+4. Industry exposure: Working in an industry you're passionate about can help you develop specialized knowledge and determine your post-MBA career path.
+
+5. Networking opportunities: Positions that allow you to interact with diverse professionals can help build your network, which is crucial for MBA success and beyond.
+
+If you'd like to provide more information about the specific jobs you're considering, I'd be happy to offer more tailored advice on which might be best suited for your MBA aspirations.</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
 <pre><code>User:  Ok, here's the jobs we discussed earlier. You said: Assistant: Based on the information you've provided, here are some job suggestions that might align with your skills, experience, and preferences:  1. Data Analyst in Consulting:    - Utilizes your coding skills and economics background    - Involves frequent meetings with clients    - Often includes travel for client presentations or data gathering    - Allows you to make data-driven recommendations for positive impact  2. Economic Consultant:    - Leverages your economics degree and research experience    - Requires both analytical and communication skills    - Often involves travel to meet clients or attend conferences    - Allows you to work on diverse projects with potential for positive impact  3. Business Intelligence Analyst:    - Uses your coding and data analysis skills    - Involves presenting findings to stakeholders (soft skills)    - May include some travel for meetings or conferences    - Helps organizations make data-driven decisions for improvement  4. Policy Researcher/Analyst:    - Applies your economics background and research skills    - Involves communicating findings to policymakers and the public    - May include travel for fieldwork or conferences    - Allows you to work on projects aimed at positive societal impact  5. Data Scientist in Non-Profit or Social Enterprise:    - Utilizes your coding and analytical skills    - Involves collaborating with diverse teams and stakeholders    - May include travel for projects or conferences    - Directly contributes to positive social or environmental impact  6. Product Analyst in Tech:    - Uses your coding and analytical skills    - Involves frequent meetings with product teams and stakeholders    - May include some travel for user research or team meetings    - Allows you to contribute to product improvements that benefit users  These roles would allow you to maintain and develop your coding skills while also leveraging your soft skills through frequent meetings and interactions. They also offer opportunities for occasional travel and the potential to make a positive impact through data-driven decision-making. I said:Hmmmm. Ok, this is helpful. Something else to consider is that I only have a bachelor's degree. If I wanted to work for a few years and then earn an MBA, which of these jobs do you think would suit me best and why?  </code></pre>
-<p>Assistant: Given your goal of potentially pursuing an MBA after a few years of work experience, I’d recommend focusing on roles that provide broad business exposure and opportunities for leadership. Among the options listed, the following would be particularly beneficial:</p>
-<ol type="1">
-<li><p>Data Analyst in Consulting: This role would be excellent preparation for an MBA. Consulting exposes you to various industries and business challenges, developing your problem-solving skills and business acumen. The client-facing nature of the work also hones your communication and presentation skills, which are valuable for MBA applications and future leadership roles.</p></li>
-<li><p>Business Intelligence Analyst: This position would give you insight into how data drives business decisions across different departments. You’d gain a holistic view of business operations, which is beneficial for MBA studies. The experience of presenting to stakeholders would also enhance your leadership and communication skills.</p></li>
-<li><p>Economic Consultant: Similar to the Data Analyst in Consulting role, this position would provide diverse industry exposure and client interaction. The economic focus aligns well with MBA coursework, and the experience of developing recommendations for clients is excellent preparation for case studies and strategic management courses in an MBA program.</p></li>
-</ol>
-<p>These roles would provide you with strong analytical skills, business exposure, and opportunities to demonstrate leadership potential - all of which are highly valued in MBA admissions. They also offer a good balance of technical and soft skills development, which would serve you well both in an MBA program and in your subsequent career.</p>
-<p>Remember, many top MBA programs value candidates with diverse experiences, so any role where you can show significant impact and leadership potential could be beneficial for your MBA aspirations.</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Assistant: Given your goal of potentially pursuing an MBA after a few years of work experience, I'd recommend focusing on roles that provide broad business exposure and opportunities for leadership. Among the options listed, the following would be particularly beneficial:
+
+1. Data Analyst in Consulting:
+   This role would be excellent preparation for an MBA. Consulting exposes you to various industries and business challenges, developing your problem-solving skills and business acumen. The client-facing nature of the work also hones your communication and presentation skills, which are valuable for MBA applications and future leadership roles.
+
+2. Business Intelligence Analyst:
+   This position would give you insight into how data drives business decisions across different departments. You'd gain a holistic view of business operations, which is beneficial for MBA studies. The experience of presenting to stakeholders would also enhance your leadership and communication skills.
+
+3. Economic Consultant:
+   Similar to the Data Analyst in Consulting role, this position would provide diverse industry exposure and client interaction. The economic focus aligns well with MBA coursework, and the experience of developing recommendations for clients is excellent preparation for case studies and strategic management courses in an MBA program.
+
+These roles would provide you with strong analytical skills, business exposure, and opportunities to demonstrate leadership potential - all of which are highly valued in MBA admissions. They also offer a good balance of technical and soft skills development, which would serve you well both in an MBA program and in your subsequent career.
+
+Remember, many top MBA programs value candidates with diverse experiences, so any role where you can show significant impact and leadership potential could be beneficial for your MBA aspirations.</code></pre>
+</div>
+<div class="cell-output cell-output-stdin">
 <pre><code>User:  Ok, thanks for your help! How do you think you did? </code></pre>
-<p>Assistant: I’m glad I could help! However, I don’t actually have any context about what specific help I provided or what task I was assisting with. I don’t have memories of past conversations, so I’m not able to evaluate my own performance on previous interactions. If you have any specific questions or need clarification on something we discussed, I’d be happy to try to assist further. Otherwise, I hope whatever information I provided was useful to you!</p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Assistant: I'm glad I could help! However, I don't actually have any context about what specific help I provided or what task I was assisting with. I don't have memories of past conversations, so I'm not able to evaluate my own performance on previous interactions. If you have any specific questions or need clarification on something we discussed, I'd be happy to try to assist further. Otherwise, I hope whatever information I provided was useful to you!</code></pre>
+</div>
+</div>
 </section>
 <section id="analysis" class="level4">
 <h4 class="anchored" data-anchor-id="analysis">Analysis</h4>
