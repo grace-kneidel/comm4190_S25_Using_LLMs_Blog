@@ -189,7 +189,15 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>I want you to create simple, easy to understand R code that draws a random sample of 100 numbers from a normal distribution centered at 0 with a standard deviation of 1. Then, the code will create a simple histogram displaying the results. The x axis will show the values drawn. The y axis will show the frequency with which each value was drawn. Key things to remember: #1: easy to read, #2: simple, #3, creates proper frequency histogram.</p>
 </blockquote>
-<p>I got back the following code: &gt; ##### Set seed for reproducibility &gt; set.seed(123) &gt; &gt; ##### Draw 100 random numbers from a normal distribution (mean = 0, sd = 1) &gt; sample_data &lt;- rnorm(100, mean = 0, sd = 1) &gt; &gt; ##### Create a histogram &gt; hist(sample_data, main = “Histogram of Random Normal Sample”, xlab = “Value”, ylab = “Frequency”, col = “lightblue”, border = “black”)</p>
+<p>I got back the following code:</p>
+<blockquote class="blockquote">
+<h5 id="set-seed-for-reproducibility" class="anchored">Set seed for reproducibility</h5>
+<p>set.seed(123)</p>
+<h5 id="draw-100-random-numbers-from-a-normal-distribution-mean-0-sd-1" class="anchored">Draw 100 random numbers from a normal distribution (mean = 0, sd = 1)</h5>
+<p>sample_data &lt;- rnorm(100, mean = 0, sd = 1)</p>
+<h5 id="create-a-histogram" class="anchored">Create a histogram</h5>
+<p>hist(sample_data, main = “Histogram of Random Normal Sample”, xlab = “Value”, ylab = “Frequency”, col = “lightblue”, border = “black”)</p>
+</blockquote>
 <p>Just to be sure, I confirmed that it produces the desired graph in R:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
