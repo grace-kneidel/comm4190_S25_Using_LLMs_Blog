@@ -1,83 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/003_translation_stata_r.html</loc>
-    <lastmod>2025-04-12T18:58:58.952Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/008_conference_pt1.html</loc>
-    <lastmod>2025-04-12T18:58:58.960Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/007_deepseek.html</loc>
-    <lastmod>2025-04-12T18:58:58.959Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/013_code_translation_2.html</loc>
-    <lastmod>2025-04-12T18:58:58.963Z</lastmod>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
+    <lastmod>2025-05-07T21:59:05.358Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/010_career_advisor.html</loc>
-    <lastmod>2025-04-12T18:58:58.961Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/018_healthcare_bias.html</loc>
-    <lastmod>2025-04-12T18:58:59.156Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/004_read_housing_data.html</loc>
-    <lastmod>2025-04-12T18:58:58.954Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/015_credit_cards.html</loc>
-    <lastmod>2025-04-12T18:58:59.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/016_data_analysis_assistant.html</loc>
-    <lastmod>2025-04-12T18:58:59.153Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/about.html</loc>
-    <lastmod>2025-04-12T18:58:58.947Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
-    <lastmod>2025-04-12T18:58:58.947Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/006_neighborhoods.html</loc>
-    <lastmod>2025-04-12T18:58:58.957Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_housing_data.html</loc>
-    <lastmod>2025-04-12T18:58:58.950Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/017_genai_modeling_consumer_behavior.html</loc>
-    <lastmod>2025-04-12T18:58:59.153Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/011_environmental_impact_part_2.html</loc>
-    <lastmod>2025-04-12T18:58:58.961Z</lastmod>
-  </url>
-  <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/014_image_generation.html</loc>
-    <lastmod>2025-04-12T18:58:59.040Z</lastmod>
+    <lastmod>2025-05-07T21:59:05.371Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/012_math.html</loc>
-    <lastmod>2025-04-12T18:58:58.962Z</lastmod>
+    <lastmod>2025-05-07T21:59:05.372Z</lastmod>
   </url>
   <url>
-    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/005_economist_svg.html</loc>
-    <lastmod>2025-04-12T18:58:58.957Z</lastmod>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/011_environmental_impact_part_2.html</loc>
+    <lastmod>2025-05-07T21:59:05.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/019_recession.html</loc>
+    <lastmod>2025-05-07T21:59:05.569Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/014_image_generation.html</loc>
+    <lastmod>2025-05-07T21:59:05.450Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/001_housing_data.html</loc>
+    <lastmod>2025-05-07T21:59:05.361Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/009_conference_pt2.html</loc>
-    <lastmod>2025-04-12T18:58:58.961Z</lastmod>
+    <lastmod>2025-05-07T21:59:05.371Z</lastmod>
   </url>
   <url>
     <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/002_water.html</loc>
-    <lastmod>2025-04-12T18:58:58.950Z</lastmod>
+    <lastmod>2025-05-07T21:59:05.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/016_data_analysis_assistant.html</loc>
+    <lastmod>2025-05-07T21:59:05.566Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/013_code_translation_2.html</loc>
+    <lastmod>2025-05-07T21:59:05.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/006_neighborhoods.html</loc>
+    <lastmod>2025-05-07T21:59:05.368Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/007_deepseek.html</loc>
+    <lastmod>2025-05-07T21:59:05.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/004_read_housing_data.html</loc>
+    <lastmod>2025-05-07T21:59:05.365Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/018_healthcare_bias.html</loc>
+    <lastmod>2025-05-07T21:59:05.569Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/003_translation_stata_r.html</loc>
+    <lastmod>2025-05-07T21:59:05.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/005_economist_svg.html</loc>
+    <lastmod>2025-05-07T21:59:05.368Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/015_credit_cards.html</loc>
+    <lastmod>2025-05-07T21:59:05.451Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/008_conference_pt1.html</loc>
+    <lastmod>2025-05-07T21:59:05.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/posts/017_genai_modeling_consumer_behavior.html</loc>
+    <lastmod>2025-05-07T21:59:05.566Z</lastmod>
+  </url>
+  <url>
+    <loc>https://grace-kneidel.github.io/comm4190_S25_Using_LLMs_Blog/index.html</loc>
+    <lastmod>2025-05-07T21:59:05.358Z</lastmod>
   </url>
 </urlset>
